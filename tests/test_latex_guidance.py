@@ -24,6 +24,15 @@ CV_TEMPLATES = SKILL_DIR / "05-cv-templates.md"
 COVER_TEMPLATES = SKILL_DIR / "06-cover-letter-templates.md"
 APPLY = REPO / ".claude" / "commands" / "apply.md"
 EXAMPLE_CV = REPO / "cv" / "main_example.tex"
+
+
+def master_cv_follows_custom_template() -> bool:
+    """True when a fork has activated a custom CV template (/add-template) and
+    rewritten its master CV in that template. The moderncv-specific checks on
+    cv/main_example.tex then do not apply; the stock guide is still checked."""
+    guide = CV_TEMPLATES.read_text(encoding="utf-8")
+    example = EXAMPLE_CV.read_text(encoding="utf-8")
+    return "BEGIN ACTIVE-TEMPLATE" in guide and "{moderncv}" not in example
 EXAMPLE_COVER = REPO / "cover_letters" / "cover_example.tex"
 
 # \item whose body starts with [ - with or without whitespace between.
@@ -170,6 +179,8 @@ class TestPdflatexFontEncodingGuard(unittest.TestCase):
         )
 
     def test_example_cv_guards_fontenc_for_pdflatex(self):
+        if master_cv_follows_custom_template():
+            self.skipTest("master CV follows the active custom template, not moderncv")
         self.assert_has_guarded_fontenc(EXAMPLE_CV)
 
     def test_cv_guide_preamble_guards_fontenc_for_pdflatex(self):
@@ -182,6 +193,8 @@ class TestGeometryScaleAlignment(unittest.TestCase):
     GEOMETRY_SCALE = re.compile(r"\\usepackage\[scale=([0-9.]+)\]\{geometry\}")
 
     def test_cv_guide_and_example_cv_share_geometry_scale(self):
+        if master_cv_follows_custom_template():
+            self.skipTest("master CV follows the active custom template, not moderncv")
         cv_match = self.GEOMETRY_SCALE.search(EXAMPLE_CV.read_text(encoding="utf-8"))
         guide_match = self.GEOMETRY_SCALE.search(CV_TEMPLATES.read_text(encoding="utf-8"))
         self.assertIsNotNone(cv_match, "cv/main_example.tex must declare geometry scale")
