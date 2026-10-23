@@ -114,7 +114,7 @@ Also read the most recent existing CV and cover letter files for concrete struct
 - Follow the moderncv/banking format from `05-cv-templates.md`
 - Tailor the profile statement and experience bullets to the specific role
 - Reframe skills and achievements to match job requirements
-- Keep to 2 pages
+- Keep to the active template's page limit (2 pages for stock moderncv, 1 page for `jakes-resume-india`)
 - **Grounding Audit:** Before writing to disk, audit all tailored bullet points against the union of three sources: `.claude/skills/job-application-assistant/01-candidate-profile.md` + the master CV (`cv/main_example.tex`) + `CLAUDE.md`'s Candidate Profile section to verify that all dates, roles, and metrics match exactly (zero profile drift or fabrication).
 
 ### Cover Letter (`cover_letters/cover_<company>_<role><COVER_EXT>`)
