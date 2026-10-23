@@ -4,12 +4,19 @@
 - **Source extension:** .tex
 - **Engine/toolchain:** pdflatex
 - **Page limit:** 1 page(s)
+- **Paper:** A4 (Indian standard), 11pt; drop to 10pt only when a full profile does not fit one page
 - **Fonts:** Computer Modern + FontAwesome 5 icons (TeX distribution fonts; TinyTeX: `tlmgr install fontawesome5`)
 - **Class/packages:** article with latexsym, fullpage, titlesec, marvosym, color, verbatim, enumitem, hyperref, fancyhdr, babel, tabularx, fontawesome5
 
 ## Compile command
 
     cd <output dir> && rm -f <file>.pdf && mkdir -p build && pdflatex -interaction=nonstopmode -output-directory=build <file>.tex && mv build/<file>.pdf ./
+
+## Layout check
+
+    python3 tools/verify_layout.py <file>.pdf --footer-band 30
+
+The template prints no page number and runs text to about 40pt above the bottom edge, so the checker's default 90pt footer band would flag every compile. Use 30pt.
 
 ## Style rules
 

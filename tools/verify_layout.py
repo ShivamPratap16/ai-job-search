@@ -440,10 +440,25 @@ def _force_utf8_output() -> None:
 
 
 def main() -> int:
+    global FOOTER_BAND_PT
     _force_utf8_output()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("pdf", nargs="?", type=Path)
+    ap.add_argument(
+        "--footer-band",
+        type=float,
+        default=FOOTER_BAND_PT,
+        help=(
+            "height in pt of the bottom band reserved for a page-number footer "
+            f"(default {FOOTER_BAND_PT:g}). Templates without a page number that "
+            "run text close to the bottom edge declare a smaller band in their "
+            "TEMPLATE.md (jakes-resume-india: 30)"
+        ),
+    )
     args = ap.parse_args()
+    if args.footer_band < 0:
+        ap.error("--footer-band must be >= 0")
+    FOOTER_BAND_PT = args.footer_band
 
     if not args.pdf:
         ap.error("pdf is required")

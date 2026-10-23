@@ -261,7 +261,7 @@ If either compile fails, fix the error and re-compile until clean.
 ```bash
 python3 tools/verify_pdf.py cv/main_<company>_<role>.pdf --pages 2
 python3 tools/verify_pdf.py cover_letters/cover_<company>_<role>.pdf --pages 1
-python3 tools/verify_layout.py cv/main_<company>_<role>.pdf
+python3 tools/verify_layout.py cv/main_<company>_<role>.pdf     # add the active template's --footer-band, if its block declares one
 python3 tools/verify_layout.py cover_letters/cover_<company>_<role>.pdf
 ```
 

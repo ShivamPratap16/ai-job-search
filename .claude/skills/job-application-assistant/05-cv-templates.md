@@ -1,5 +1,5 @@
 ---
-framework_version: 1.5.0
+framework_version: 1.5.1
 ---
 
 # CV Templates and Tailoring Guide
@@ -15,6 +15,7 @@ framework_version: 1.5.0
 > - **Compile command:** `rm -f <file>.pdf && mkdir -p build && pdflatex -interaction=nonstopmode -output-directory=build <file>.tex && mv build/<file>.pdf ./` (not the lualatex command in the stock guidance below — `/apply`'s compile step must use this instead). Run it from the output directory. It redirects to `build/`, so the log is in `build/`, and `/apply`'s Step 5e cleanup must delete that `build/` folder too
 > - **Fonts:** Computer Modern + FontAwesome 5 icons from the TeX distribution (TinyTeX: `tlmgr install fontawesome5`)
 > - **Page limit:** exactly 1 page(s)
+> - **Layout check:** `python3 tools/verify_layout.py <file>.pdf --footer-band 30` (no page-number footer; text runs close to the bottom edge)
 > - **Output file:** `cv/main_<company>_<role>.tex`; the template needs no companion files
 <!-- END ACTIVE-TEMPLATE -->
 

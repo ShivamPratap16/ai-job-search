@@ -60,6 +60,27 @@ class TestFooterBand(unittest.TestCase):
         """SILENT FAILURE: \\enlargethispage pushing body text over the footer."""
         self.assertTrue(Page(A4_HEIGHT, [line(50), line(780), line(800)]).footer_crowded)
 
+    def test_footer_band_flag_narrows_the_band_for_templates_without_page_numbers(self):
+        """A one-page resume with no page number legitimately runs text to ~40pt
+        from the bottom; --footer-band 30 keeps those lines in the body."""
+        page = [line(50), line(781), line(794)]
+        self.assertTrue(Page(A4_HEIGHT, page).footer_crowded)
+        with patch.object(verify_layout, "FOOTER_BAND_PT", 30.0):
+            self.assertFalse(Page(A4_HEIGHT, page).footer_crowded)
+
+    def test_footer_band_flag_is_parsed_and_rejects_negatives(self):
+        with patch("sys.argv", ["verify_layout.py", "--footer-band", "-5", "x.pdf"]):
+            with self.assertRaises(SystemExit):
+                main()
+        original = verify_layout.FOOTER_BAND_PT
+        try:
+            with patch("sys.argv", ["verify_layout.py", "--footer-band", "30", "missing.pdf"]):
+                with redirect_stdout(io.StringIO()):
+                    self.assertEqual(main(), 2)  # file missing, but the flag was accepted
+            self.assertEqual(verify_layout.FOOTER_BAND_PT, 30.0)
+        finally:
+            verify_layout.FOOTER_BAND_PT = original
+
 
 class TestHeadingAndIndentDetection(unittest.TestCase):
     def setUp(self):
