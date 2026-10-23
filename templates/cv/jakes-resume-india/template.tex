@@ -1,0 +1,146 @@
+%-------------------------
+% One-page software-engineering resume (India campus / fresher standard)
+% Based on Jake Gutierrez's resume template, MIT License:
+%   https://github.com/jakegut/resume
+% Profile-agnostic skeleton: every [PLACEHOLDER] is filled by /apply from the
+% candidate profile. Compile with pdflatex (see TEMPLATE.md).
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+% Contact details stay literal text: ATS parsers read the text layer, and an
+% email or phone carried only by an icon or a link is invisible to them.
+\begin{center}
+    \textbf{\Huge \scshape [YOUR_NAME]} \\ \vspace{1pt}
+    \small \faPhone\ [YOUR_PHONE] $|$
+    \faEnvelope\ \href{mailto:[YOUR_EMAIL]}{[YOUR_EMAIL]} $|$
+    \faGithub\ \href{[YOUR_GITHUB_URL]}{[YOUR_GITHUB_HANDLE]} $|$
+    \faLinkedin\ \href{[YOUR_LINKEDIN_URL]}{[YOUR_LINKEDIN_HANDLE]} $|$
+    \faGlobe\ \href{[YOUR_PORTFOLIO_URL]}{Portfolio}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {[YOUR_INSTITUTION]}{[YEAR_START] -- [YEAR_END]}
+      {[YOUR_DEGREE]}{CGPA: [YOUR_CGPA]}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {[COMPANY]}{[START_DATE] -- [END_DATE]}
+      {[JOB_TITLE]}{[LOCATION]}
+      \resumeItemListStart
+        \resumeItem{[ACHIEVEMENT_WITH_METRIC]}
+        \resumeItem{[ACHIEVEMENT_WITH_METRIC]}
+        \resumeItem{[ACHIEVEMENT_WITH_METRIC]}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{[PROJECT_NAME]} $|$ \emph{[TECH_STACK]}}{\href{[PROJECT_URL]}{\underline{GitHub}}}
+          \resumeItemListStart
+            \resumeItem{[WHAT_IT_DOES_AND_THE_HARD_PART]}
+            \resumeItem{[OUTCOME_WITH_NUMBER]}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: [LANGUAGES]} \\
+     \textbf{Frameworks}{: [FRAMEWORKS]} \\
+     \textbf{Databases/Cloud}{: [DATABASES_AND_CLOUD]} \\
+     \textbf{Developer Tools}{: [TOOLS]} \\
+     \textbf{Core Skills}{: [CONCEPTS]}
+    }}
+ \end{itemize}
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading{\textbf{[ACHIEVEMENT_TITLE]}, [ACHIEVEMENT_DETAIL]}{[YEAR]}
+  \resumeSubHeadingListEnd
+
+\end{document}

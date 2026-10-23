@@ -67,6 +67,31 @@ site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
 site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
 ```
 
+## India market (portal CLIs)
+
+When the profile's location is in India, `/scrape` runs these portal CLIs; each one's `SKILL.md` documents its flags. Write the query categories below as role and skill keywords, then run every category on every enabled India portal with the profile's experience flag:
+
+| Portal skill | What it covers | Query style |
+|---|---|---|
+| `linkedin-search` | Everything, including reposts by agencies | `-q "<role>" -l "India"` (or a city) `--experience-level internship,entry` |
+| `ats-search` | Employer career boards (Greenhouse, Lever, Ashby, SmartRecruiters) in `cli/companies.json` | `-q "<title word>"` e.g. `engineer`, `backend`, `sde` |
+| `internshala-search` | Fresher and entry-level roles with salary and probation terms | `-q "<category>"` e.g. `backend development`, `java`, `python` |
+| `instahyre-search` | Product companies and startups | `-q "<skill or function>"` e.g. `Java`, `Backend Development` |
+| `cutshort-search` | Startups, salary ranges | `-q "<role or skill>"` e.g. `backend developer`, `spring boot` |
+| `hirist-search` | Tech-only board with experience ranges | `-q "<keyword>"` e.g. `backend`, `java` |
+| `unstop-search` | Campus drives and fresher hiring challenges | `-q "<keyword>"` e.g. `software engineer` |
+
+Naukri, Foundit and Indeed India block automated access (CAPTCHA / 403), so they stay on the WebSearch fallback: `site:naukri.com "<role>" <city>` queries, read with `WebFetch` only where it works.
+
+Example categories for an early-career backend engineer (replace with your own from `/setup`):
+
+```
+P1 backend:   "backend developer", "backend engineer", "sde 1", "software engineer"
+P1 stack:     "java", "spring boot", "kotlin", "python", "fastapi"
+P2 adjacent:  "full stack developer", "platform engineer", "api developer"
+P3 domain:    "fintech", "payments"   (combine with a P1 term on portals that take free text)
+```
+
 ## Location Filter
 
 When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:

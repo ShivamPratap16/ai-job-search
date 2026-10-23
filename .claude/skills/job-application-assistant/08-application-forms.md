@@ -1,5 +1,5 @@
 ---
-framework_version: 1.0.0
+framework_version: 1.1.0
 ---
 
 # Application Form Fields
@@ -65,6 +65,26 @@ These reward **a specific situation over an adjective**. Most applicants submit 
 4. Present all candidates with counts, recommend one, and say why.
 
 Prefer the version that **maps the candidate's problem onto the employer's problem**, where a truthful mapping exists. That is what "stand out" is actually asking for.
+
+## Field type: Indian application-form standards
+
+Indian employer portals, campus forms (Superset, Unstop, Google Forms sent by HR) and ATSs (Darwinbox, Keka, Zoho Recruit, Naukri RMS) ask the same fixed set of questions. Answer each from the **India job-search details** section of `01-candidate-profile.md`; never estimate one that is missing there - ask the candidate and record the answer in that section the same turn (the standing rule in `/apply`).
+
+| Field | How to answer |
+|---|---|
+| Current CTC | The candidate's actual current CTC. A fresher or an intern enters `0` or "Fresher", plus the last stipend if the form has a box for it ("Stipend ₹40,000/month as an intern"). Never present a stipend as a CTC. |
+| Expected CTC | The figure from the profile, in LPA. Where the form allows text, a range or "as per company norms for the role" is acceptable; where it wants a number, give the profile's number. |
+| Notice period | "Immediate" / "0 days" for a candidate who is not employed; otherwise the contractual notice and the earliest joining date. |
+| Total / relevant experience | Full-time experience in years and months. Internships are listed separately as internships; a form that only has one box gets full-time experience, and the internships go in the free-text field if there is one. Never round internships up into full-time years. |
+| 10th / 12th / graduation marks | Exactly as on the mark sheets (percentage or CGPA and its scale, e.g. "7.80/10"). |
+| Active backlogs | From the profile; never guess. |
+| Graduation year / batch | From the profile. |
+| Preferred locations / willing to relocate | From the profile's constraints. |
+| Gap in education or career | One honest factual line, only when asked. |
+| Referral / employee ID | Only a real referral the candidate has. |
+| "Why do you want to join us?" / "Why should we hire you?" | Treat as the motivation and self-introduction field types above: one concrete reason tied to the employer's actual product, one piece of evidence from the profile. |
+
+Salary and notice answers must be the same in every form for the same employer: write them into the per-employer `.txt` file's dates quick-reference so they are copied, not retyped.
 
 ## Output format
 

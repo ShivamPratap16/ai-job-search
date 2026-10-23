@@ -400,7 +400,7 @@ def cmd_apply(args) -> int:
             errors.append({"key": key, "error": str(exc)})
             continue
         bad_gate = next(
-            (f for f in ("location_verdict", "language_gate") if result.get(f) and result[f] not in GATE_VERDICTS),
+            (f for f in ("location_verdict", "language_gate", "india_gate") if result.get(f) and result[f] not in GATE_VERDICTS),
             None,
         )
         if bad_gate:
@@ -439,6 +439,18 @@ def cmd_apply(args) -> int:
             entry.pop("language_note", None)
         else:
             entry["language_note"] = result.get("language_note")
+        # India Market Gates (04-job-evaluation.md): optional, only returned for
+        # roles in India. Absent means the gates did not apply, not PASS-by-default
+        # for a role that should have been checked, so nothing is stored then.
+        if result.get("india_gate"):
+            entry["india_gate"] = result["india_gate"]
+            if entry["india_gate"] == "PASS":
+                entry.pop("india_note", None)
+            else:
+                entry["india_note"] = result.get("india_note")
+        else:
+            entry.pop("india_gate", None)
+            entry.pop("india_note", None)
         # Absence is not a correction: a fetch that degraded to a listing page
         # returns no deadline, and blanking a stored one would erase a real
         # date and make the entry immortal to rule 6's sweep.
@@ -479,6 +491,8 @@ def cmd_apply(args) -> int:
                 "location_verdict": entry["location_verdict"],
                 "language_gate": entry["language_gate"],
                 "language_note": entry.get("language_note"),
+                "india_gate": entry.get("india_gate"),
+                "india_note": entry.get("india_note"),
                 "deadline": entry.get("deadline"),
                 "posted_date": entry.get("posted_date"),
                 "urgent": bool(parsed and today <= parsed <= today + timedelta(days=URGENT_DAYS)),
@@ -492,7 +506,7 @@ def cmd_apply(args) -> int:
         save_state(args.state, doc)
 
     rows.sort(key=lambda r: (r["score"], r["urgent"]), reverse=True)
-    veto = lambda r: r["location_verdict"] == "FAIL" or r["language_gate"] == "FAIL"
+    veto = lambda r: r["location_verdict"] == "FAIL" or r["language_gate"] == "FAIL" or r.get("india_gate") == "FAIL"
     vetoed = [r for r in rows if veto(r)]
     ranked = [r for r in rows if not veto(r)]
     print(

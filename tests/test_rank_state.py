@@ -533,6 +533,45 @@ class Apply(RankStateCase):
         self.assertEqual([r["key"] for r in out["ranked"]], ["c"])
         self.assertEqual(self.read_state()["b"]["language_note"], "requires fluent Polish")
 
+    def test_india_gate_fail_vetoes_and_keeps_its_note(self):
+        self.write_state({"a": entry(), "b": entry()})
+        scores = {"technical": 90, "experience": 90, "behavioral": 90, "career": 90}
+        out = self.run_tool(
+            "apply",
+            "--results",
+            self.results(
+                [
+                    {"key": "a", "status": "scored", "scores": scores, "india_gate": "FAIL",
+                     "india_note": "bond: 24 months, Rs 2 lakh penalty"},
+                    {"key": "b", "status": "scored", "scores": scores, "india_gate": "FLAG",
+                     "india_note": "experience: 1-3 yrs"},
+                ]
+            ),
+        )
+        self.assertEqual([r["key"] for r in out["vetoed"]], ["a"])
+        self.assertEqual([r["key"] for r in out["ranked"]], ["b"])
+        self.assertEqual(out["ranked"][0]["india_note"], "experience: 1-3 yrs")
+        self.assertEqual(self.read_state()["a"]["india_note"], "bond: 24 months, Rs 2 lakh penalty")
+
+    def test_india_gate_is_optional_and_validated(self):
+        self.write_state({"a": entry(india_gate="FLAG", india_note="stale"), "b": entry()})
+        scores = {"technical": 50, "experience": 50, "behavioral": 50, "career": 50}
+        out = self.run_tool(
+            "apply",
+            "--results",
+            self.results(
+                [
+                    {"key": "a", "status": "scored", "scores": scores},
+                    {"key": "b", "status": "scored", "scores": scores, "india_gate": "maybe"},
+                ]
+            ),
+            expect=1,
+        )
+        state = self.read_state()
+        self.assertNotIn("india_gate", state["a"])
+        self.assertNotIn("india_note", state["a"])
+        self.assertEqual([e["key"] for e in out["errors"]], ["b"])
+
     def test_language_note_is_dropped_when_gate_passes(self):
         self.write_state({"a": entry(language_note="stale note from a prior run")})
         self.run_tool(

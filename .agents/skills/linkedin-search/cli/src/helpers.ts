@@ -289,3 +289,28 @@ export function workTypeFlag(mode: string | undefined): string | null {
       return null
   }
 }
+
+/**
+ * Experience-level filter: LinkedIn's f_E codes. Accepts a comma list and
+ * returns "1,2" style, or null when any entry is unknown (never dropped
+ * silently, which would widen the search to every level).
+ */
+export function experienceLevels(list: string | undefined): string | null {
+  const codes: Record<string, string> = {
+    internship: "1", intern: "1",
+    entry: "2", "entry-level": "2", fresher: "2",
+    associate: "3",
+    "mid-senior": "4", mid: "4", senior: "4",
+    director: "5",
+    executive: "6",
+  }
+  const parts = (list || "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean)
+  if (!parts.length) return null
+  const out: string[] = []
+  for (const p of parts) {
+    const c = codes[p]
+    if (!c) return null
+    if (!out.includes(c)) out.push(c)
+  }
+  return out.sort().join(",")
+}

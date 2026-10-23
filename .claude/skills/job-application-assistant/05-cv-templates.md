@@ -1,8 +1,22 @@
 ---
-framework_version: 1.4.8
+framework_version: 1.5.0
 ---
 
 # CV Templates and Tailoring Guide
+
+<!-- BEGIN ACTIVE-TEMPLATE (managed by /add-template - do not edit by hand) -->
+> **Active template override: `jakes-resume-india`**
+>
+> A custom template is active. Where this block conflicts with the stock guidance below, this block wins. Structural advice below (tailoring, page-budget, cutting rules) still applies.
+>
+> - **Template skeleton:** `templates/cv/jakes-resume-india/template.tex` — use this as the structural reference instead of the stock template
+> - **Manifest:** `templates/cv/jakes-resume-india/TEMPLATE.md` — read this for style rules and known pitfalls before drafting
+> - **Source extension:** `.tex`
+> - **Compile command:** `rm -f <file>.pdf && mkdir -p build && pdflatex -interaction=nonstopmode -output-directory=build <file>.tex && mv build/<file>.pdf ./` (not the lualatex command in the stock guidance below — `/apply`'s compile step must use this instead). Run it from the output directory. It redirects to `build/`, so the log is in `build/`, and `/apply`'s Step 5e cleanup must delete that `build/` folder too
+> - **Fonts:** Computer Modern + FontAwesome 5 icons from the TeX distribution (TinyTeX: `tlmgr install fontawesome5`)
+> - **Page limit:** exactly 1 page(s)
+> - **Output file:** `cv/main_<company>_<role>.tex`; the template needs no companion files
+<!-- END ACTIVE-TEMPLATE -->
 
 <!-- SETUP: Profile statements and section ordering are personalized by running /setup -->
 

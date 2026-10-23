@@ -65,6 +65,7 @@ Before proceeding to drafting, inspect the posting URL's hostname to verify prov
    - `smartrecruiters.com`
    - `workable.com`
    *Look-alike parsing:* the host must match the apex exactly or end with `.<apex>`. Look-alike prefix tricks (e.g. `evil-greenhouse.io`), suffix spoofing (e.g. `job-boards.greenhouse.io.evil.com`), userinfo tricks (`https://greenhouse.io@evil.com/`), and unfamiliar subdomains fail closed and must not be classified as an official ATS.
+   A host that matches both rules (the `ats-search` portal CLI reads these ATS boards) is classified as an **official ATS**: the employer's own posting is the stronger provenance.
 3. **Neither (Unverified host):** name the host plainly in the evaluation output as unverified (`⚠ Unverified source host: <hostname> - not an installed portal board or known ATS apex`). Alert the user to verify the employer and link legitimacy before committing time and tokens to drafting.
 
 Present the evaluation to the user with:
@@ -123,7 +124,7 @@ Also read the most recent existing CV and cover letter files for concrete struct
 - Tailor the opening paragraph to the specific role and company
 - Address to a named person if available in the posting, otherwise "Dear Hiring Manager" (or equivalent in posting language)
 - Keep to approximately one page
-- Any mention of agentic coding or AI tooling must reference **Claude Code** by name
+- Name AI tools only where the candidate's profile records using them for real work, and only when the posting asks for them; never add a tool name to fill space
 
 Write both files to disk. Keep the exact text of both drafts in working memory — you will pass them inline to the reviewer in Step 3 and revise them in Step 4 without re-reading.
 

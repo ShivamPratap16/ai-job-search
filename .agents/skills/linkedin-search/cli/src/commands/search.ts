@@ -5,6 +5,7 @@ import {
   jobageToTPR,
   minutesToTPR,
   workTypeFlag,
+  experienceLevels,
   writeError,
   type JobCard,
 } from "../helpers.js"
@@ -15,6 +16,7 @@ export interface SearchOpts {
   jobage: number
   jobageMinutes?: number
   remote?: string // "remote" | "hybrid" | "onsite"
+  experienceLevel?: string // comma list, e.g. "internship,entry"
   page: number
   limit?: number
   format: "json" | "table" | "plain"
@@ -28,6 +30,8 @@ function buildUrl(opts: SearchOpts): string {
   if (tpr) params.set("f_TPR", tpr)
   const wt = workTypeFlag(opts.remote)
   if (wt) params.set("f_WT", wt)
+  const fe = experienceLevels(opts.experienceLevel)
+  if (fe) params.set("f_E", fe)
   params.set("start", String((opts.page - 1) * 10))
   return `${SEARCH_URL}?${params.toString()}`
 }

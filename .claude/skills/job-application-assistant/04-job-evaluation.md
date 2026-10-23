@@ -1,5 +1,5 @@
 ---
-framework_version: 1.2.7
+framework_version: 1.3.0
 ---
 
 # Job Evaluation Framework
@@ -45,6 +45,54 @@ Read the posting's language requirements as stated for **the role itself** — n
 Judge the level comparison the same way you judge everything else in this framework: read both sides as written and reason about it, don't force either into a rigid scale — CEFR letters, LinkedIn-style buckets ("professional working proficiency"), and plain-English words ("conversational," "fluent," "native") all appear in the wild and don't map onto each other precisely. When genuinely unsure whether a stated bar exceeds the candidate's level, prefer FLAG over a silent PASS — the human is meant to be the tiebreaker, not the gate.
 
 **Worked example:** a candidate whose Languages table lists Spanish (Native) and English (B1/B2). A posting requiring "fluent Russian" → **FAIL**, Russian isn't declared at all. A posting requiring "fluent English" → **FLAG**, English is declared but "fluent" plausibly exceeds B1/B2 — score and draft the application, but tell the candidate this posting's bar may be a stretch and let them decide. A posting requiring "conversational English" or unspecified English → **PASS**, B1/B2 clears a "conversational" bar cleanly.
+
+## India Market Gates — run before scoring when the role is in India
+
+Indian postings carry a handful of conditions that decide whether a role is worth an application at all, and they rarely sit in the requirements list where the scoring dimensions look. Read the whole posting (and, on `/apply`, the employer's careers page) for each of these before scoring. Each gate records `PASS`, `FLAG` (score and draft, but surface it to the user with the quoted line) or `FAIL` (do not score or draft; quote the line back). `/rank` treats any `FAIL` here as a shortlist veto, the same way it treats the Language Gate.
+
+### 1. Experience gate
+
+Indian postings state experience as a year range ("0-2 yrs", "1-3 years", "2+ years"). Compare the **lower bound** with the candidate's countable experience recorded in `01-candidate-profile.md` (full-time months, plus internships at the weight the profile says recruiters accept).
+
+| Posting's minimum vs. candidate | Verdict |
+|---|---|
+| Fresher, "0-x yrs", "2025/2026 batch", "new grad", or no experience stated | PASS |
+| Minimum is at most 1 year above the candidate's countable experience | FLAG: a stretch. Recruiters often accept strong internships against a 1-year floor; say so and let the user decide |
+| Minimum is 2+ years above the candidate's countable experience | FAIL, unless the profile's deal-breakers say to apply anyway |
+
+Batch restrictions are part of this gate: a posting that names graduation years ("2024/2025 pass-outs only") FAILs for a candidate outside them, and PASSes cleanly for a candidate inside them, which is worth naming as a strength.
+
+### 2. Service bond / training agreement
+
+Bonds are common in IT services and some product companies hiring freshers: a fixed service period with a penalty for leaving early, or a "training cost" recovered on exit.
+
+- No bond mentioned: PASS (ask about it before accepting an offer; postings do not always say).
+- Bond of 12 months or less with a modest penalty: FLAG, quoting the period and amount.
+- Bond longer than the profile's limit, original certificates held as security, or a penalty above the profile's limit: FAIL.
+
+The candidate's own limits live in the Deal-breakers section of `01-candidate-profile.md`.
+
+### 3. Fraud and pay-to-work signals
+
+FAIL immediately, without scoring, when the posting asks the candidate to pay anything (registration, training, "security deposit", laptop or kit fees), promises a job in exchange for buying a course, or offers a salary far above the market for the role with no interview. FLAG a recruiter that uses only a personal Gmail/WhatsApp contact and no company domain, or a staffing agency that does not name the client, and verify the employer exists before drafting. Many listings on aggregator boards are reposts by consultancies; prefer the employer's own careers page whenever both exist.
+
+### 4. CTC and stipend
+
+Indian pay is quoted as annual CTC in lakhs per annum (LPA). Compare it with the floor recorded in the profile:
+
+- Stated CTC at or above the floor: PASS.
+- Stated CTC below the floor, or a fixed component far below the headline CTC (large variable, joining bonus or ESOPs counted in), or a long probation on low pay: FLAG with the numbers quoted.
+- Not disclosed: PASS, and note that it must be asked about.
+
+Probation terms ("3 months at ₹15,000/month, then ₹3-4 LPA") belong in the report: they change what the first months pay.
+
+### 5. Work mode, location and notice
+
+Location is scored by the Location & Logistics dimension below; for India, also read the work mode (WFO / hybrid / remote), the number of office days, shift timing (night shifts for US clients), and whether the role asks for an immediate joiner or a notice period the candidate can meet. Mismatches against the profile are FLAGs, not FAILs, unless the profile lists them as deal-breakers.
+
+### Company type (informs Career Alignment, not a gate)
+
+Tell the user which kind of employer this is, because it changes what the role builds toward: **product company** (own product, engineering-led), **startup** (note funding stage if known), **IT services / consulting** (client projects, often bonds and mass hiring), **GCC / captive centre** of a foreign company, or **staffing agency** posting for an unnamed client. Weigh it against the career goals in the profile.
 
 ## Scoring Dimensions
 
@@ -159,6 +207,7 @@ Present the evaluation as:
 | Experience Match | XX/100 | [brief note] |
 | Behavioral Fit | XX/100 | [brief note] |
 | Location | PASS/FAIL | [brief note] |
+| India gates (if applicable) | PASS/FLAG/FAIL | [experience · bond · fraud · CTC · work mode] |
 | Career Alignment | XX/100 | [brief note] |
 
 **Overall Score: XX/100** (weighted average of scored dimensions)
@@ -176,7 +225,7 @@ Present the evaluation as:
 
 ### Company Research Checklist
 - [ ] Checked company website (mission, values, recent news)
-- [ ] Checked review sites (Glassdoor, Jobindex, etc.)
+- [ ] Checked review sites (Glassdoor, AmbitionBox for Indian employers, your market's equivalent)
 - [ ] Checked LinkedIn for team size, recent hires, connections
 - [ ] Checked media for restructuring, growth, or workplace issues
 - [ ] Identified network contacts who may know the team/manager

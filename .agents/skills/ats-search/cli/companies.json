@@ -1,0 +1,280 @@
+{
+  "_comment": "Company job boards /scrape checks for India roles. Add a company with its ATS (greenhouse, lever, ashby, smartrecruiters) and the board slug from its careers URL; verify with: bun run src/cli.ts search --company <slug>",
+  "companies": [
+    {
+      "name": "Agoda",
+      "ats": "greenhouse",
+      "slug": "agoda"
+    },
+    {
+      "name": "Airbnb",
+      "ats": "greenhouse",
+      "slug": "airbnb"
+    },
+    {
+      "name": "Airwallex",
+      "ats": "ashby",
+      "slug": "airwallex"
+    },
+    {
+      "name": "Atlan",
+      "ats": "ashby",
+      "slug": "atlan"
+    },
+    {
+      "name": "Bureau",
+      "ats": "ashby",
+      "slug": "bureau"
+    },
+    {
+      "name": "Canva",
+      "ats": "smartrecruiters",
+      "slug": "canva"
+    },
+    {
+      "name": "CARS24",
+      "ats": "smartrecruiters",
+      "slug": "cars24"
+    },
+    {
+      "name": "Coinbase",
+      "ats": "greenhouse",
+      "slug": "coinbase"
+    },
+    {
+      "name": "CRED",
+      "ats": "lever",
+      "slug": "cred"
+    },
+    {
+      "name": "Databricks",
+      "ats": "greenhouse",
+      "slug": "databricks"
+    },
+    {
+      "name": "Datadog",
+      "ats": "greenhouse",
+      "slug": "datadog"
+    },
+    {
+      "name": "Druva",
+      "ats": "greenhouse",
+      "slug": "druva"
+    },
+    {
+      "name": "Elastic",
+      "ats": "greenhouse",
+      "slug": "elastic"
+    },
+    {
+      "name": "FamPay",
+      "ats": "lever",
+      "slug": "fampay"
+    },
+    {
+      "name": "Figma",
+      "ats": "greenhouse",
+      "slug": "figma"
+    },
+    {
+      "name": "Freshworks",
+      "ats": "smartrecruiters",
+      "slug": "freshworks"
+    },
+    {
+      "name": "GitLab",
+      "ats": "greenhouse",
+      "slug": "gitlab"
+    },
+    {
+      "name": "Glance",
+      "ats": "greenhouse",
+      "slug": "glance"
+    },
+    {
+      "name": "Grab",
+      "ats": "smartrecruiters",
+      "slug": "grab"
+    },
+    {
+      "name": "Grafana Labs",
+      "ats": "greenhouse",
+      "slug": "grafanalabs"
+    },
+    {
+      "name": "Groww",
+      "ats": "greenhouse",
+      "slug": "groww"
+    },
+    {
+      "name": "HackerRank",
+      "ats": "greenhouse",
+      "slug": "hackerrank"
+    },
+    {
+      "name": "Hevo Data",
+      "ats": "lever",
+      "slug": "hevodata"
+    },
+    {
+      "name": "InMobi",
+      "ats": "greenhouse",
+      "slug": "inmobi"
+    },
+    {
+      "name": "InterviewBit",
+      "ats": "smartrecruiters",
+      "slug": "interviewbit"
+    },
+    {
+      "name": "ixigo",
+      "ats": "smartrecruiters",
+      "slug": "ixigo"
+    },
+    {
+      "name": "Lendingkart",
+      "ats": "smartrecruiters",
+      "slug": "lendingkart"
+    },
+    {
+      "name": "Lokal",
+      "ats": "smartrecruiters",
+      "slug": "lokal"
+    },
+    {
+      "name": "Meesho",
+      "ats": "lever",
+      "slug": "meesho"
+    },
+    {
+      "name": "Mindtickle",
+      "ats": "lever",
+      "slug": "mindtickle"
+    },
+    {
+      "name": "MongoDB",
+      "ats": "greenhouse",
+      "slug": "mongodb"
+    },
+    {
+      "name": "Nium",
+      "ats": "lever",
+      "slug": "nium"
+    },
+    {
+      "name": "NoBroker",
+      "ats": "smartrecruiters",
+      "slug": "nobroker"
+    },
+    {
+      "name": "Notion",
+      "ats": "ashby",
+      "slug": "notion"
+    },
+    {
+      "name": "Observe.AI",
+      "ats": "greenhouse",
+      "slug": "observeai"
+    },
+    {
+      "name": "Okta",
+      "ats": "greenhouse",
+      "slug": "okta"
+    },
+    {
+      "name": "Paytm",
+      "ats": "lever",
+      "slug": "paytm"
+    },
+    {
+      "name": "Pocket FM",
+      "ats": "lever",
+      "slug": "pocketfm"
+    },
+    {
+      "name": "Redis",
+      "ats": "ashby",
+      "slug": "redis"
+    },
+    {
+      "name": "Rubrik",
+      "ats": "greenhouse",
+      "slug": "rubrik"
+    },
+    {
+      "name": "Sarvam",
+      "ats": "ashby",
+      "slug": "sarvam"
+    },
+    {
+      "name": "Shipsy",
+      "ats": "smartrecruiters",
+      "slug": "shipsy"
+    },
+    {
+      "name": "Sigmoid",
+      "ats": "greenhouse",
+      "slug": "sigmoid"
+    },
+    {
+      "name": "Stripe",
+      "ats": "greenhouse",
+      "slug": "stripe"
+    },
+    {
+      "name": "Sumo Logic",
+      "ats": "greenhouse",
+      "slug": "sumologic"
+    },
+    {
+      "name": "Swiggy",
+      "ats": "smartrecruiters",
+      "slug": "swiggy"
+    },
+    {
+      "name": "Tekion",
+      "ats": "ashby",
+      "slug": "tekion"
+    },
+    {
+      "name": "Temporal",
+      "ats": "ashby",
+      "slug": "temporal"
+    },
+    {
+      "name": "Tide",
+      "ats": "greenhouse",
+      "slug": "tide"
+    },
+    {
+      "name": "Turtlemint",
+      "ats": "smartrecruiters",
+      "slug": "turtlemint"
+    },
+    {
+      "name": "Unacademy",
+      "ats": "smartrecruiters",
+      "slug": "unacademy"
+    },
+    {
+      "name": "Upstox",
+      "ats": "smartrecruiters",
+      "slug": "upstox"
+    },
+    {
+      "name": "Whatfix",
+      "ats": "smartrecruiters",
+      "slug": "whatfix"
+    },
+    {
+      "name": "Wise",
+      "ats": "smartrecruiters",
+      "slug": "wise"
+    },
+    {
+      "name": "Zeta",
+      "ats": "lever",
+      "slug": "zeta"
+    }
+  ]
+}

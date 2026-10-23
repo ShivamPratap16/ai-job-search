@@ -59,6 +59,36 @@ files ready    with fit ratings     (LaTeX, tailored)
 
 The framework encodes career guidance best practices, including structured evaluation criteria, forward-looking cover letter framing, and optional salary benchmarking.
 
+## India edition (this fork)
+
+This fork adapts the framework to the Indian job market while keeping the upstream workflow (`/setup`, `/scrape`, `/rank`, `/apply`, `/interview`, `/outcome`) intact.
+
+**Indian job sources** (portal CLIs under `.agents/skills/`, zero runtime dependencies, picked up by `/scrape` automatically):
+
+| Skill | Source | Best for |
+|---|---|---|
+| `ats-search` | Company career boards on Greenhouse, Lever, Ashby and SmartRecruiters (55 boards in `cli/companies.json`: Stripe, Databricks, Paytm, Meesho, Zeta, CRED, Groww, Sarvam, Freshworks, ...) | The employer's own posting, no reposts |
+| `internshala-search` | Internshala | Fresher and entry-level roles, with salary and probation terms |
+| `instahyre-search` | Instahyre | Product companies and startups |
+| `cutshort-search` | Cutshort | Startups, with salary and experience ranges |
+| `hirist-search` | Hirist | Tech-only board, experience range on every posting |
+| `unstop-search` | Unstop | Campus drives and fresher hiring challenges |
+| `linkedin-search` | LinkedIn (now with `--experience-level internship,entry,associate`) | Everything else |
+
+Every India CLI takes `--experience <years>` so a fresher's search drops roles asking for 3+ years. Naukri, Foundit and Indeed India block automated access, so they stay on the WebSearch fallback.
+
+**India-aware evaluation.** `04-job-evaluation.md` adds **India Market Gates** that run before scoring: experience floor vs. the candidate's countable experience (internships included), service bonds, pay-to-work and fake-recruiter signals, CTC floor in LPA (probation pay included), and work mode. `/rank` records the verdict as `india_gate` and vetoes a `FAIL`.
+
+**Indian application forms.** `08-application-forms.md` covers current/expected CTC, notice period, 10th/12th/CGPA, backlogs and batch, answered from a new *India job-search details* section in the profile.
+
+**One-page resume.** The active CV template is `templates/cv/jakes-resume-india` (the one-page format Indian tech recruiters expect, compiled with `pdflatex`). `/add-template --use default` switches back to the stock two-page moderncv.
+
+**`/outreach`.** Finds a verified HR/recruiter/founder contact or a referral path for a company or a ranked posting, drafts a 50-90 word cold email and a LinkedIn referral request, saves them as drafts (never sends), and records them in the tracker.
+
+**Removed:** the upstream rule that forced "Claude Code" into every CV and cover letter. AI tools are now named only when the profile records real use and the posting asks for them.
+
+Setup on Linux without root: install Bun (`curl -fsSL https://bun.sh/install | bash`) and TinyTeX (`curl -sL https://yihui.org/tinytex/install-bin-unix.sh | sh`, then `tlmgr install fontawesome5 titlesec marvosym enumitem fullpage preprint`).
+
 ## Prerequisites
 
 - [Claude Code](https://claude.com/claude-code) (CLI). Claude Code has no free tier: you need a Claude Pro/Max/Team subscription or Anthropic API credits (pay-per-token, usually cheaper for occasional use). Using a different agent tool (Codex, Antigravity, Gemini CLI)? Start at [`AGENTS.md`](AGENTS.md) - the portal search skills work there out of the box, and [community forks](https://github.com/MadsLorentzen/ai-job-search/discussions/78) adapt the full workflow.

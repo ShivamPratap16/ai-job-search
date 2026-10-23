@@ -45,8 +45,10 @@ def derive_contract_fields() -> frozenset[str]:
 
 
 def search_output_source(search_ts: Path) -> str:
-    helpers_ts = search_ts.parent.parent / "helpers.ts"
-    files = [search_ts, helpers_ts] if helpers_ts.exists() else [search_ts]
+    # India portal CLIs share cli.ts/commands/* and normalize results in
+    # src/portal.ts (one file per portal), so that file is read too.
+    src = search_ts.parent.parent
+    files = [search_ts] + [f for f in (src / "helpers.ts", src / "portal.ts") if f.exists()]
     return "\n".join(f.read_text(encoding="utf-8") for f in files)
 
 

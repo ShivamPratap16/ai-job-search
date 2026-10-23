@@ -1,5 +1,5 @@
 ---
-framework_version: 1.1.1
+framework_version: 1.2.0
 ---
 
 # Candidate Profile
@@ -26,6 +26,24 @@ a hard no, not a gap to smooth over. -->
 | Language | Level | Notes |
 |----------|-------|-------|
 | [LANGUAGE] | [LEVEL, e.g. "Native" / "C2" / "B1/B2 (conversational)"] | [optional] |
+
+## India job-search details
+<!-- Fill this section when you apply for jobs in India. It answers the fixed questions on
+Indian application forms (08-application-forms.md) and sets the limits the India Market Gates
+in 04-job-evaluation.md check postings against. Leave it out if you never apply in India. -->
+- **Graduation year / batch:** [YOUR_GRADUATION_YEAR]
+- **Marks:** 10th [X_PERCENT] · 12th [XII_PERCENT] · Graduation [CGPA_OR_PERCENT]
+- **Active backlogs:** [NUMBER]
+- **Full-time experience:** [YEARS_MONTHS, "0" for a fresher]
+- **Internships:** [INTERNSHIP_MONTHS_TOTAL] (list them under Professional Experience)
+- **Countable experience for experience gates:** [e.g. "0 years; recruiters often count my 8 months of internships against 1-year floors"]
+- **Current CTC / last stipend:** [CURRENT_CTC_OR_STIPEND]
+- **Expected CTC:** [EXPECTED_CTC_LPA]
+- **CTC floor (do not apply below):** [MIN_CTC_LPA]
+- **Notice period / earliest joining:** [NOTICE_OR_IMMEDIATE]
+- **Preferred cities:** [CITIES]; **open to relocation:** [YES_NO]; **work mode:** [WFO / hybrid / remote preference]
+- **Service bond limit:** [e.g. "no bond", "up to 12 months, no certificate retention"]
+- **Company types wanted:** [e.g. product companies and funded startups first; IT services as a fallback]
 
 ## Education
 

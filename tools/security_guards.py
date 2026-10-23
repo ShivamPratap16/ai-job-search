@@ -65,6 +65,13 @@ ALLOWED_PERMISSIONS = {
     "Bash(bun run .agents/skills/jobnet-search/cli/src/cli.ts:*)",
     "Bash(bun run .agents/skills/linkedin-search/cli/src/cli.ts:*)",
     "Bash(bun run .agents/skills/freehire-search/cli/src/cli.ts:*)",
+    # India portal CLIs (this fork): same per-portal grant pattern.
+    "Bash(bun run .agents/skills/instahyre-search/cli/src/cli.ts:*)",
+    "Bash(bun run .agents/skills/internshala-search/cli/src/cli.ts:*)",
+    "Bash(bun run .agents/skills/unstop-search/cli/src/cli.ts:*)",
+    "Bash(bun run .agents/skills/cutshort-search/cli/src/cli.ts:*)",
+    "Bash(bun run .agents/skills/hirist-search/cli/src/cli.ts:*)",
+    "Bash(bun run .agents/skills/ats-search/cli/src/cli.ts:*)",
     "Bash(python salary_lookup.py:*)",
     "Bash(python3 salary_lookup.py:*)",
     "Bash(python tools/rank_state.py:*)",
